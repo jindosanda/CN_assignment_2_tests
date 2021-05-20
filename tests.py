@@ -74,8 +74,5 @@ class TestClients(unittest.TestCase):
         self.assertTrue(check_flag_validity(10, output[-1]))
 
 if __name__ == '__main__':
-    if(len(sys.argv) > 1):
-        cmd = sys.argv[1]
-
     unittest.main()
     
