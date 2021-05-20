@@ -15,7 +15,7 @@ class TestClients(unittest.TestCase):
     
     def test2(self):
         time.sleep(1)
-        output = subprocess.check_output([cmd, '../client_2.py']).decode().strip()
+        output = subprocess.check_output([cmd, '../client_2.py']).decode().strip().split()[1]
         self.assertTrue(check_flag_validity(2, output))
     
     def test3(self):
