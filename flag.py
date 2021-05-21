@@ -1,6 +1,5 @@
 import hashlib
 import os
-from dotenv import load_dotenv
 import random 
 
 def check_flag_validity(question, flag):
