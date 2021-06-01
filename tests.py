@@ -11,18 +11,18 @@ class TestClients(unittest.TestCase):
     units = ["bits", "kibit", "kbit", "mibit", "mbit", "gibit", "gbit", "kbps", "mbps", "gbps", "kb", "mb", "gb"]
     
     def test1(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_1.py']).decode().strip()
         self.assertTrue(check_flag_validity(1, output))
     
     def test2(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_2.py']).decode().strip().split()
         self.assertEqual(output[0].upper(), 'HELO')
         self.assertTrue(check_flag_validity(2, output[1]))
     
     def test3(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_3.py']).decode().strip().split()
         self.assertEqual(output[0], 'random')
         self.assertEqual(output[1], 'port:')
@@ -30,7 +30,7 @@ class TestClients(unittest.TestCase):
         self.assertTrue(check_flag_validity(3, output[3]))
 
     def test4(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_4.py']).decode().strip().split()
         self.assertEqual(type( int(output[0]) ), int)
         assert(output[1].lower() in self.units )
@@ -41,7 +41,7 @@ class TestClients(unittest.TestCase):
         self.assertTrue(check_flag_validity(4, output[5]))
 
     def test5(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_5.py']).decode().strip().split()
         self.assertEqual(len(output), 8)
         l = output[0].split('=')
@@ -60,7 +60,7 @@ class TestClients(unittest.TestCase):
         self.assertTrue(check_flag_validity(5, output[7]))
 
     def test6(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_6.py']).decode().strip().split()
         self.assertEqual(len(output), 9)
         self.assertEqual(output[0].lower(), 'syn')
@@ -74,7 +74,7 @@ class TestClients(unittest.TestCase):
         self.assertTrue(check_flag_validity(6, output[8]))
 
     def test7(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_7.py']).decode().strip().split()
         self.assertEqual(len(output), 13)
         self.assertEqual(output[0].lower(), 'fin,ack')
@@ -96,7 +96,7 @@ class TestClients(unittest.TestCase):
         self.assertEqual(type(int(tmp[1])), int)
 
     def test8(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_8.py']).decode().strip().lower()
         if('host:10.40.0.46' in output):
             output = output.replace('host:10.40.0.46', 'host: 10.40.0.46')
@@ -148,7 +148,7 @@ class TestClients(unittest.TestCase):
         self.assertEqual(output[35], '-->')
 
     def test9(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_9.py']).decode().strip()
         if('host:10.40.0.46' in output.lower()):
             output = output.lower().replace('host:10.40.0.46', 'host: 10.40.0.46')
@@ -187,7 +187,7 @@ class TestClients(unittest.TestCase):
         self.assertTrue(check_flag_validity(9, base64.b64decode(output[-1]).decode().strip()))
 
     def test10(self):
-        time.sleep(2)
+        time.sleep(0.5)
         output = subprocess.check_output([cmd, '../client_10.py']).decode().strip()
         self.assertNotIn("Wrong answer", output)
         output = output.split()
